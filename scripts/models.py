@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 class Script(models.Model):
-    owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE) # wiele do jednego
     title = models.CharField(max_length=120)
     description = models.TextField(blank=True)
     created_at = models.DateTimeField(auto_now_add=True)

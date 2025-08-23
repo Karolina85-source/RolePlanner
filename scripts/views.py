@@ -158,12 +158,6 @@ def home(request):
         logout(request)
     return render(request, 'scripts/home.html')
 
-class ScriptUpdate(LoginRequiredMixin, UpdateView):
-    model = Script
-    fields = ['title', 'description']
-    template_name = 'scripts/script_form.html'
-    success_url = reverse_lazy('script_list')
-
 class ScriptDelete(LoginRequiredMixin, DeleteView):
     model = Script
     template_name = 'scripts/script_confirm_delete.html'
