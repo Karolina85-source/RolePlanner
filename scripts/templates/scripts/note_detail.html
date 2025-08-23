@@ -1,0 +1,15 @@
+{% extends 'scripts/base.html' %}
+{% block content %}
+<h1>Notatka</h1>
+<p>{{ note.body|linebreaksbr }}</p>
+{% if note.script %}
+<p>Scenariusz: {{ note.script.title }}</p>
+{% endif %}
+{% if note.scene %}
+<p>Scena: {{ note.scene.title }}</p>
+{% endif %}
+{% if note.character %}
+<p>Postać: {{ note.character.name }}</p>
+{% endif %}
+<a href="{% url 'note_list' %}">Powrót do listy notatek</a>
+{% endblock %}

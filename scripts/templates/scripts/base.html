@@ -1,0 +1,68 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}RolePlanner{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <header>
+        <nav>
+            {% if user.is_authenticated %}
+                <ul>
+                    <li><a href="{% url 'script_list' %}">Scenariusze</a></li>
+                    <li><a href="{% url 'scene_list' %}">Sceny</a></li>
+                    <li><a href="{% url 'character_list' %}">Postaci</a></li>
+                    <li><a href="{% url 'note_list' %}">Notatki</a></li>
+                    <li><a href="{% url 'roleassignment_list' %}">Przypisania ról</a></li>
+                    <li><a href="{% url 'scenerole_list' %}">Role scen</a></li>
+                    <li><a href="{% url 'delete-account' %}">Usuń konto</a></li>
+                    <li>
+                      <form method="post" action="{% url 'logout' %}" style="display:inline;">
+                         {% csrf_token %}
+                         <button type="submit" class="link-button">Wyloguj się</button>
+                      </form>
+                    </li>
+                </ul>
+            {% else %}
+                <p>
+                    <a href="{% url 'login' %}">Zaloguj się</a> |
+                    <a href="{% url 'register' %}">Zarejestruj się</a>
+                </p>
+            {% endif %}
+        </nav>
+    </header>
+
+    <main>
+        {% if messages %}
+          <ul class="messages">
+              {% for message in messages %}
+                  <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+              {% endfor %}
+          </ul>
+        {% endif %}
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; 2025 RolePlanner - Wszelkie prawa zastrzeżone</p>
+    </footer>
+
+    <style>
+    /* Styl dla przycisku wyglądającego jak link */
+    .link-button {
+        background: none;
+        border: none;
+        padding: 0;
+        font: inherit;
+        color: #2980b9;
+        cursor: pointer;
+        text-decoration: underline;
+    }
+    .link-button:hover {
+        color: #12539b;
+    }
+    </style>
+</body>
+</html>

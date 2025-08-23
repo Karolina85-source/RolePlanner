@@ -1,0 +1,16 @@
+{% extends 'scripts/base.html' %}
+{% block content %}
+<h1>Postacie</h1>
+<a href="{% url 'character_add' %}">Dodaj postać</a>
+<ul>
+    {% for character in characters %}
+    <li>
+        <a href="{% url 'character_detail' character.pk %}">{{ character.name }}</a>
+        <a href="{% url 'character_edit' character.pk %}">[Edytuj]</a>
+        <a href="{% url 'character_delete' character.pk %}" style="color:red;">[Usuń]</a>
+    </li>
+    {% empty %}
+    <li>Brak postaci</li>
+    {% endfor %}
+</ul>
+{% endblock %}

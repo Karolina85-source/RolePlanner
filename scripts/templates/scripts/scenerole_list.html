@@ -1,0 +1,16 @@
+{% extends 'scripts/base.html' %}
+{% block content %}
+<h1>Przypisania postaci do scen</h1>
+<a href="{% url 'scenerole_add' %}">Dodaj przypisanie do sceny</a>
+<ul>
+    {% for sr in scene_roles %}
+    <li>
+        {{ sr.character.name }} w scenie "{{ sr.scene.title }}"
+        <a href="{% url 'scenerole_edit' sr.pk %}">[Edytuj]</a>
+        <a href="{% url 'scenerole_delete' sr.pk %}" style="color:red;">[Usuń]</a>
+    </li>
+    {% empty %}
+    <li>Brak przypisań</li>
+    {% endfor %}
+</ul>
+{% endblock %}

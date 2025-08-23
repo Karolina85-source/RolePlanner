@@ -1,0 +1,6 @@
+{% extends 'scripts/base.html' %}
+{% block content %}
+<h1>{{ script.title }}</h1>
+<p>{{ script.description }}</p>
+<a href="{% url 'script_edit' script.pk %}">Edytuj</a> | <a href="{% url 'script_list' %}">Powrót do listy</a>
+{% endblock %}

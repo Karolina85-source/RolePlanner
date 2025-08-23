@@ -1,0 +1,14 @@
+{% extends 'scripts/base.html' %}
+
+{% block content %}
+<p>Witaj, {{ user.username }}!</p>
+<p>Przejdź do swoich zasobów:</p>
+<ul>
+  <li><a href="{% url 'script_list' %}">Scenariusze</a></li>
+  <li><a href="{% url 'scene_list' %}">Sceny</a></li>
+  <li><a href="{% url 'character_list' %}">Postaci</a></li>
+  <li><a href="{% url 'note_list' %}">Notatki</a></li>
+  <li><a href="{% url 'roleassignment_list' %}">Przypisania ról</a></li>
+  <li><a href="{% url 'scenerole_list' %}">Role scen</a></li>
+</ul>
+{% endblock %}

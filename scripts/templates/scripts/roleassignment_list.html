@@ -1,0 +1,15 @@
+{% extends 'scripts/base.html' %}
+{% block content %}
+<h1>Przypisania postaci do scenariuszy</h1>
+<a href="{% url 'roleassignment_add' %}">Dodaj przypisanie</a>
+<ul>
+    {% for ra in role_assignments %}
+    <li>{{ ra.character.name }} w scenariuszu "{{ ra.script.title }}"
+        <a href="{% url 'roleassignment_edit' ra.pk %}">[Edytuj]</a>
+        <a href="{% url 'roleassignment_delete' ra.pk %}" style="color:red;">[Usuń]</a>
+    </li>
+    {% empty %}
+    <li>Brak przypisań</li>
+    {% endfor %}
+</ul>
+{% endblock %}

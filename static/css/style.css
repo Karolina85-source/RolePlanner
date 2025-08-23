@@ -1,0 +1,191 @@
+/* Podstawowe style */
+body {
+    background-color: #fafafa;
+    color: #333;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Nagłówek i nawigacja */
+header {
+    background-color: #34495e;
+    padding: 12px 0;
+}
+
+header nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+}
+
+header nav ul li {
+    display: inline;
+}
+
+header nav ul li a,
+header nav ul li form .link-button {
+    color: #ecf0f1;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+    font-size: 1rem;
+    transition: color 0.25s ease;
+}
+
+header nav ul li a:hover,
+header nav ul li form .link-button:hover {
+    color: #1abc9c;
+    text-decoration: underline;
+}
+
+/* Styl przycisku wyglądającego jak link */
+.link-button {
+    font-family: inherit;
+}
+
+/* Główna zawartość */
+main {
+    max-width: 640px;
+    margin: 30px auto;
+    padding: 20px 25px;
+    background-color: white;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+/* Nagłówki */
+h1, h2 {
+    margin-bottom: 16px;
+    color: #2c3e50;
+}
+
+/* Wiadomości */
+ul.messages {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+ul.messages li {
+    background-color: #fff4da;
+    border: 1px solid #ffecb3;
+    color: #665c00;
+    padding: 10px 15px;
+    border-radius: 4px;
+    font-weight: 500;
+}
+
+/* Formularze */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 4px;
+    color: #2c3e50;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+textarea,
+select {
+    padding: 8px 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fafafa;
+    transition: border-color 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus,
+textarea:focus,
+select:focus {
+    border-color: #1abc9c;
+    outline: none;
+}
+
+/* Przyciski */
+button[type="submit"],
+.button {
+    background-color: #1abc9c;
+    color: white;
+    padding: 10px 25px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    width: fit-content;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover,
+.button:hover {
+    background-color: #16a085;
+}
+
+/* Linki w treści */
+a {
+    color: #1abc9c;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Stopka */
+footer {
+    text-align: center;
+    padding: 15px 0;
+    background-color: #34495e;
+    color: #ecf0f1;
+    margin-top: 40px;
+    font-size: 0.9rem;
+}
+
+/* Responsywność */
+@media (max-width: 600px) {
+    header nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    main {
+        margin: 15px 10px;
+        padding: 15px 20px;
+    }
+}
+
+a.button {
+    text-decoration: none;
+    color: #fff;
+    padding: 10px 26px;
+    border-radius: 5px;
+    background: #1976d2;
+}
+
+a.button:hover {
+    background: #12539b;
+    color: #fff;
+}
+
+footer {
+    margin-top: 32px;
+    font-size: 0.96em;
+    letter-spacing: 1px;
+    background: #2f3b52;
+}

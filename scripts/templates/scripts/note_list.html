@@ -1,0 +1,16 @@
+{% extends 'scripts/base.html' %}
+{% block content %}
+<h1>Notatki</h1>
+<a href="{% url 'note_add' %}">Dodaj notatkę</a>
+<ul>
+    {% for note in notes %}
+    <li>
+        <a href="{% url 'note_detail' note.pk %}">{{ note.body|truncatechars:50 }}</a>
+        <a href="{% url 'note-delete' note.pk %}" style="color: red; margin-left: 15px;">Usuń</a>
+        <a href="{% url 'note_edit' note.pk %}">[Edytuj]</a>
+    </li>
+    {% empty %}
+    <li>Brak notatek</li>
+    {% endfor %}
+</ul>
+{% endblock %}

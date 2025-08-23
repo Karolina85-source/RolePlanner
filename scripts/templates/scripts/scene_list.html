@@ -1,0 +1,16 @@
+{% extends 'scripts/base.html' %}
+{% block content %}
+<h1>Sceny</h1>
+<a href="{% url 'scene_add' %}">Dodaj scenę</a>
+<ul>
+    {% for scene in scenes %}
+    <li>
+        <a href="{% url 'scene_detail' scene.pk %}">{{ scene.title }}</a> (Scenariusz: {{ scene.script.title }})
+        <a href="{% url 'scene_edit' scene.pk %}">[Edytuj]</a>
+        <a href="{% url 'scene_delete' scene.pk %}" style="color:red;">[Usuń]</a>
+    </li>
+    {% empty %}
+    <li>Brak scen.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

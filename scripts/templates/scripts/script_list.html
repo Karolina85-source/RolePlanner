@@ -1,0 +1,15 @@
+{% extends 'scripts/base.html' %}
+{% block content %}
+<h1>Moje scenariusze</h1>
+<a href="{% url 'script_add' %}">Dodaj scenariusz</a>
+<ul>
+    {% for script in scripts %}
+    <li>
+        <a href="{% url 'script_detail' script.pk %}">{{ script.title }}</a>
+        <a href="{% url 'script_edit' script.pk %}">[Edytuj]</a>
+        <a href="{% url 'script_delete' script.pk %}" style="color:red;">[Usuń]</a></li>
+    {% empty %}
+    <li>Brak scenariuszy</li>
+    {% endfor %}
+</ul>
+{% endblock %}
