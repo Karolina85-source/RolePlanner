@@ -41,7 +41,11 @@ class CharacterCreate(LoginRequiredMixin, CreateView):
     model = Character
     fields = ['name', 'bio']
     template_name = 'scripts/character_form.html'
-    success_url = '/characters/'
+    success_url = reverse_lazy('character_list')
+
+    def form_valid(self, form):
+        form.instance.owner = self.request.user
+        return super().form_valid(form)
 
 class SceneList(LoginRequiredMixin, ListView):
     model = Scene
@@ -175,9 +179,6 @@ class SceneDelete(LoginRequiredMixin, DeleteView):
     model = Scene
     template_name = 'scripts/scene_confirm_delete.html'
     success_url = reverse_lazy('scene_list')
-
-from django.urls import reverse_lazy
-from django.views.generic import DeleteView
 
 class CharacterUpdate(LoginRequiredMixin, UpdateView):
     model = Character
