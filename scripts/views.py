@@ -1,6 +1,7 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render #dane z kodu łączą się z HTML
+from django.shortcuts import redirect
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy #przekierowanie użytkownika po udanym działaniu
 from .models import Script
 from .models import Character
 from .models import Scene
@@ -8,9 +9,9 @@ from .models import Note
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import RoleAssignment, SceneRole
 from django.contrib.auth.forms import UserCreationForm
-from django.views import generic
+from django.views import generic #gotowe widoki Django
 from django.contrib.auth import logout
-from django.views import View
+from django.views import View #klasa widoku, na bazie której tworzę własne widoki klasowe
 from django.contrib.auth.decorators import login_required
 
 class ScriptList(LoginRequiredMixin, ListView):
@@ -18,8 +19,8 @@ class ScriptList(LoginRequiredMixin, ListView):
     template_name = 'scripts/script_list.html'
     context_object_name = 'scripts'
 
-    def get_queryset(self):
-        # pokazujemy scenariusze tylko zalogowanego użytkownika
+    def get_queryset(self): # biorę dane z bazy
+        # scenariusze tylko zalogowanego użytkownika
         return Script.objects.filter(owner=self.request.user)
 
 class ScriptCreate(LoginRequiredMixin, CreateView):
@@ -28,9 +29,9 @@ class ScriptCreate(LoginRequiredMixin, CreateView):
     template_name = 'scripts/script_form.html'
     success_url = reverse_lazy('script_list')
 
-    def form_valid(self, form):
+    def form_valid(self, form): # jeśli poprawnie wypełniony formularz
         form.instance.owner = self.request.user
-        return super().form_valid(form)
+        return super().form_valid(form) # zapis
 
 class CharacterList(LoginRequiredMixin, ListView):
     model = Character

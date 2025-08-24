@@ -29,10 +29,10 @@ class UserDeleteView(LoginRequiredMixin, generic.DeleteView):
         messages.success(request, "Twoje konto zostało usunięte.")
         return super().delete(request, *args, **kwargs)
 
-class UserDeleteView(LoginRequiredMixin, DeleteView):
-    model = User
-    template_name = 'registration/user_confirm_delete.html'
-    success_url = reverse_lazy('user-deleted')
-
-    def get_object(self, queryset=None):
-        return self.request.user
+#class UserDeleteView(LoginRequiredMixin, DeleteView):
+#   model = User
+#   template_name = 'registration/user_confirm_delete.html'
+#   success_url = reverse_lazy('user-deleted')
+#
+#    def get_object(self, queryset=None):
+#        return self.request.user
